@@ -4030,8 +4030,8 @@
 	
 	    for (var i = 0, ien = settings.aoData.length; i < ien; i++) {
 	        s = _fnGetCellData(settings, i, colIdx, 'display') + '';
-	        s = s.replace(__re_html_remove, '');
-	        s = String(s); // 确保s是字符串
+	        s = s.replace(/<\/?script[^>]*>/gi, '');
+	        s = escape(s);
 	
 	        if (s.length > max) {
 	            max = s.length;
@@ -4040,7 +4040,7 @@
 	    }
 	
 	    return maxIdx;
-	}	
+	}
 	
 	/**
 	 * Append a CSS unit (only if required) to a string
